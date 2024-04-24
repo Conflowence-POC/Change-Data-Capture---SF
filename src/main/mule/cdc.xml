@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:salesforce="http://www.mulesoft.org/schema/mule/salesforce" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/salesforce http://www.mulesoft.org/schema/mule/salesforce/current/mule-salesforce.xsd">
+	<salesforce:sfdc-config name="Salesforce_Config" doc:name="Salesforce Config" doc:id="c510a231-0efa-482b-98b3-5ec1053edc3a" >
+		<salesforce:basic-connection username="nissisales@conflowence.com" password="salesforce29" securityToken="5lt8CRKO06XiIDFE4koWWy5b" />
+	</salesforce:sfdc-config>
+	<flow name="cdcFlow" doc:id="43318e43-da92-46ad-817d-c5f92afd5fa1" >
+		<salesforce:replay-channel-listener streamingChannel="/data/ContactChangeEvent" replayOption="ALL" doc:name="Replay channel listener" doc:id="e8c5bc5e-56a2-43af-bf57-3b7e34784224" config-ref="Salesforce_Config"/>
+		<logger level="INFO" doc:name="Logger" doc:id="4715a599-c7df-4ab4-bdd3-168b5211ce89" />
+	</flow>
+</mule>
